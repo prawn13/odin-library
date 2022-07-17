@@ -1,0 +1,1 @@
+This is the Library assignment from the Odin Project. The purpose was to learn about object constructors -- it also was an opportunity to continue honing my skills with CSS styling and to practice DOM manipulation. 
