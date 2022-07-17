@@ -20,6 +20,10 @@
     display: grid;
     grid-template-rows: repeat(5, 1fr);
     padding: 20px;
+    max-height: 40vh;
+    margin: 100px 100px 100px 0;
+    width: 80%;
+    height: 50%;
 }
 
 .books {
@@ -34,14 +38,18 @@
     display: grid;
     place-content: center;
     text-align: center;
-    border: solid 3px #3f6212;
-    background-color: #92400e;
+    border: solid 3px hsl(86, 69%, 23%);
+    background-color: hsl(23, 83%, 31%);
     color: #f59e0b;
     margin: 10px;
     border-radius: 10%;
     max-width: 300px;
     max-height: 300px;
     position: relative;
+}
+
+.book:hover {
+    background-color: hsl(23, 83%, 21%);
 }
 
 h2 {

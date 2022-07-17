@@ -13,25 +13,26 @@
         <div class="header">
             <h1>welcome 2 the library</h1>
         </div>
-        <div class="add-book">
-            <li>Title
-                <input id="title" type="text" required>
-            </li>
-            <li>
-                Author
-                <input id="author" type="text" required>
-            </li>
-            <li>
-                Pages
-                <input id="pages" type="number" maxlength="2000" required>
-            </li>
-            <li>
-                Have you read?
-                <input id="read" type="checkbox">
-            </li>
-            <span id="invalid"></span>
-            <button onclick="addFromButton()" id="add-button">Add book</button>
-        </div>
+        <form id="add-form" action="">
+            <div class="add-book">
+                <li>Title
+                    <input id="title" type="text" required>
+                </li>
+                <li>
+                    Author
+                    <input id="author" type="text" required>
+                </li>
+                <li>
+                    Pages
+                    <input id="pages" type="number" required>
+                </li>
+                <li>
+                    Have you read?
+                    <input id="read" type="checkbox">
+                </li>
+                <button type="submit" id="add-button">Add book</button>
+            </div>
+        </form>
         <div class="books"></div>
     </div>
     
