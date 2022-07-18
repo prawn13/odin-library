@@ -20,36 +20,45 @@ function addBook(title, author, pages, read = false) {
     library.push(new Book(title, author, pages, read));
 }
 
-
 // Generates the display of all stored books
 function displayBooks() {
     const books = document.querySelector('.books');
     books.innerHTML = "";
 
     for (let b of library) {
+        // Prevents unecessary re-display
+        if (library.indexOf(b) < books.childElementCount - 1) return;
+        
         const bookDiv = document.createElement('div');
         bookDiv.classList.add('book');
         bookDiv.innerHTML =
             `<h2>${b.title}</h2>
-            ${b.author}<br>
-            ${b.pages} pages<br>`;
+            <p>${b.author}</p>
+            <p>${b.pages} pages</p>`;
+        bookDiv.setAttribute('data-index', library.indexOf(b));
 
-        // Adds read or not toggle
+        const btnGroup = document.createElement('div');
+        btnGroup.classList.add('button-group');
+
+        // Adds read toggle
         const readBtn = document.createElement('button');
-        readBtn.innerText = b.read ? 'Read' : 'Not read yet';
-        readBtn.addEventListener('click', function() {
-            readBtn.innerText = (readBtn.innerHTML === 'Read') ? 'Not read yet' : 'Read';
+        readBtn.innerText = b.read ? 'READ' : 'NOT READ YET';
+        readBtn.classList.add('read-btn');
+        readBtn.addEventListener('click', () => {
+            readBtn.innerText = (readBtn.innerHTML === 'READ') ? 'NOT READ YET' : 'READ';
+            b.read = true ? false : true;
         });
-        bookDiv.appendChild(readBtn);
+        btnGroup.appendChild(readBtn);
 
         // Adds delete button to book
         const btn = document.createElement('button');
-        btn.innerText = 'delete';
+        btn.innerText = 'DELETE';
         btn.addEventListener('click', function(e) {
-            e.target.parentElement.remove();
+            e.target.parentElement.parentElement.remove();
         });
-        bookDiv.appendChild(btn);
-
+        btnGroup.appendChild(btn);
+        
+        bookDiv.appendChild(btnGroup);
         books.appendChild(bookDiv);
     }
 }
@@ -66,9 +75,9 @@ function addFromButton() {
 
     // Checks if all required fields are filled out
     if (title !== '' && author !== '' && pages !== '') {
+        // Adds the book, re-displays library, and resets form
         addBook(title, author, pages, read);
         displayBooks();
-        const form = document.getElementById('add-form');
-        form.reset();
+        document.getElementById('add-form').reset();
     }
 }

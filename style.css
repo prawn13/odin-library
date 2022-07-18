@@ -2,18 +2,20 @@
     padding: 0;
     margin: 0;
     list-style: none;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
 .container {
     display: grid;
-    grid-template: 1fr 15fr / 1fr 4fr;
+    grid-template-columns: 1fr 3fr;
     min-width: 100vw;
     min-height: 100vh;
 }
 
-.header {
-    grid-column: 1 / 3;
+.left-column {
     grid-template-columns: 1fr 6fr;
+    background-color: hsl(215, 25%, 37%);
+    padding: 20px;
 }
 
 .add-book {
@@ -26,33 +28,135 @@
     height: 50%;
 }
 
+li {
+    margin-bottom: 1em;
+    transition: all 0.3s;
+}
+
+li:focus-within {
+    transform: scale(1.04, 1.04);
+}
+
+input {
+    width: 100%;
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.02);
+    border-color: #ccc;
+    border-style: none none solid none;
+    transition: all .5s;
+    padding: 5px;
+    font-size: 18px;
+    color: #e2e8f0;
+}
+
+input::placeholder {
+    color: transparent;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+    transform: translateY(-3em) scale(.8);
+}
+
+input:focus {
+    box-shadow: none;
+    outline: none;
+    border-color: orange;
+}
+
+input[type="checkbox"] {
+    height: 100%;
+}
+
+input[type="checkbox"]:checked {
+    transform: scale(1.1);
+    content: ':)';
+}
+
+label {
+    font-size: 1em;
+    color: #aaa;
+    display: block;
+    opacity: 1;
+    transform: translateY(-1.5em);
+    transform-origin: 0 0;
+    transition: all .3s;
+}
+
 .books {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 1fr;
     border: solid 3px #7f1d1d;
-    background-color: #334155;
-    margin: 40px;
+    background-color: hsl(215, 25%, 27%);
+    padding: 40px;
 }
 
 .book {
     display: grid;
-    place-content: center;
     text-align: center;
+    align-self: center;
     border: solid 3px hsl(86, 69%, 23%);
+    border-radius: 20px;
     background-color: hsl(23, 83%, 31%);
     color: #f59e0b;
     margin: 10px;
-    border-radius: 10%;
-    max-width: 300px;
-    max-height: 300px;
-    position: relative;
+    padding: 20px;
+    
 }
 
-.book:hover {
-    background-color: hsl(23, 83%, 21%);
+p {
+    margin: 2px;
+    padding: 2px;
+    border-radius: 6px;
+    font-size: 26px;
+    background-color: hsl(23, 83%, 36%);
+}
+
+button {
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 20px 10%;
+    background-color: hsl(86, 69%, 23%);
+    font-size: 20px;
+    color: rgb(80, 185, 14);
+    transition: all 0.3s;
+}
+
+.button-group {
+    display: grid;
+    align-self: end;
+    padding: 20px;
+}
+
+.read-btn {
+    background-color: hsl(86, 19%, 23%);
+}
+
+button:hover {
+    transform: scale(1.03) translateY(2px);
+    background-color: hsl(86, 69%, 93%);
+}  
+
+h1 {
+    font-size: 40px;
+    text-align: center;
+    color:hsl(38, 92%, 60%);
+    background-color: hsl(215, 25%, 57%);
+    padding: 10px 60px 10px 60px;
+    margin: 10px;
+    border-radius: 8px;
+    
 }
 
 h2 {
-    font-size: 20px;
-    margin: 0;
+    background-color: hsl(23, 83%, 36%);
+    border-radius: 6px;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 2px;
+    padding: 2px;
+    display: grid;
+    align-self: center;
 }
