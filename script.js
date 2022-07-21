@@ -1,3 +1,13 @@
+// Book Class
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.read = read
+    }
+}
+
 let library = [];
 
 addBook("The Freedom of Night", "Angel Smith", 139, true);
@@ -6,14 +16,6 @@ addBook("Grease in The Wool", "Carl Cob", 287, false);
 addBook("Gyroscape", "Dani Loop", 355, true);
 
 displayBooks();
-
-// Book Constructor
-function Book(title, author, pages, read) {
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.read = read
-}
 
 // Adds new book to library
 function addBook(title, author, pages, read = false) {
@@ -54,7 +56,10 @@ function displayBooks() {
         const btn = document.createElement('button');
         btn.innerText = 'DELETE';
         btn.addEventListener('click', function(e) {
-            e.target.parentElement.parentElement.remove();
+            let delBook = e.target.parentElement.parentElement;
+            library.splice(library.indexOf(delBook.getAttribute('data-index')), 1);
+            delBook.remove();
+            displayBooks();
         });
         btnGroup.appendChild(btn);
         
